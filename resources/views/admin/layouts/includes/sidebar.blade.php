@@ -144,6 +144,29 @@
 
                 </ul>
             </li>
+
+            <li class="relative menu-item">
+                <div class="parent-item flex items-center flex-row w-full px-3 py-3 cursor-pointer">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                    <span class="menu-title ml-4 text-sm font-medium grow">Product</span>
+                    <i class="fa-solid fa-angle-down arrow-icon"></i>
+                </div>
+                <ul class="dropdown-menu bg-white text-light dark:bg-dark dark:text-dark ml-2">
+                    <li class="dropdown-item">
+                        <a href="{{ route('admin.product.index') }}" class="flex items-center flex-row w-full px-3 py-2.5 ">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <span class="ml-4 text-sm font-medium">Product List</span>
+                        </a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a href="{{ route('admin.product.create') }}" class="flex items-center flex-row w-full px-3 py-2.5 ">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <span class="ml-4 text-sm font-medium">Add Product</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
         </ul>
     </div>
 </aside>

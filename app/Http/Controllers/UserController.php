@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\User\UserRequest;
+use App\Http\Requests\User\ProductRequest;
 use App\Services\UserService;
 use Illuminate\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -38,7 +38,7 @@ class UserController extends Controller
         }
     }
 
-    public function store(UserRequest $request): RedirectResponse
+    public function store(ProductRequest $request): RedirectResponse
     {
         try {
             $this->userService->storeItem($request->validated());

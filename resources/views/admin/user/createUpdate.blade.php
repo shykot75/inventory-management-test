@@ -4,6 +4,20 @@
     {{ !empty($user) ? 'Edit' : 'Add New' }} User | Admin
 @endsection
 
+@push('after-styles')
+    <style>
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+    </style>
+@endpush
+
 @section('breadcrumbs')
     <x-breadcrumb.items>
         <x-slot:title> {{ !empty($user) ? 'Edit' : 'Add New' }} User</x-slot:title>
@@ -12,6 +26,7 @@
         <x-breadcrumb.item position="last" type="active">{{ !empty($user) ? 'Edit' : 'Add New' }} User</x-breadcrumb.item>
     </x-breadcrumb.items>
 @endsection
+
 
 @section('content')
     <div class="main-body">
@@ -40,7 +55,8 @@
                         </div>
                         <div>
                             <label for="phone" class="form-input-label  text-base font-medium required">Phone No.</label>
-                            <input type="text" name="phone" id="phone" class="form-input" placeholder="Enter Phone"
+                            <input type="number" name="phone" id="phone" class="form-input" placeholder="Enter Phone"
+                                   min="0" oninput="validity.valid||(value='');" onwheel="this.blur()"
                                    value="{{ !empty($user) ? $user->phone : old('phone') }}" >
                         </div>
                     </div>
