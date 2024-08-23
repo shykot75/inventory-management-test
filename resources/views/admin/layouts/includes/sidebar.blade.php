@@ -130,13 +130,13 @@
                 </div>
                 <ul class="dropdown-menu bg-white text-light dark:bg-dark dark:text-dark ml-2">
                     <li class="dropdown-item">
-                        <a href="" class="flex items-center flex-row w-full px-3 py-2.5 ">
+                        <a href="{{ route('admin.users.index') }}" class="flex items-center flex-row w-full px-3 py-2.5 ">
                             <i class="fa-solid fa-chevron-right"></i>
                             <span class="ml-4 text-sm font-medium">User List</span>
                         </a>
                     </li>
                     <li class="dropdown-item">
-                        <a href="" class="flex items-center flex-row w-full px-3 py-2.5 ">
+                        <a href="{{ route('admin.users.create') }}" class="flex items-center flex-row w-full px-3 py-2.5 ">
                             <i class="fa-solid fa-chevron-right"></i>
                             <span class="ml-4 text-sm font-medium">Add User</span>
                         </a>

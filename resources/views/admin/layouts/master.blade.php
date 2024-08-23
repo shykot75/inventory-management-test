@@ -8,7 +8,7 @@
           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-
+    @stack('after-styles')
 </head>
 <body class="w-full bg-body-light text-light dark:bg-dark dark:text-dark">
 <!-- Navbar Start -->
@@ -45,6 +45,7 @@
 <!-- Overlay -->
 <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden ease-in-out transition-all duration-500"></div>
 <script type="module" src="{{ asset('assets/js/bcs-util.js') }}"></script>
+@stack('after-scripts')
 <script type="module" src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 </html>
