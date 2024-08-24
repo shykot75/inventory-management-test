@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\User\UserRequest;
+use App\Services\UserService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -15,6 +17,27 @@ class AuthenticateController extends Controller
     public function loginForm(): View|Factory|Application
     {
         return view('admin.login');
+    }
+    public function registrationForm(): View|Factory|Application
+    {
+        return view('admin.registration');
+    }
+
+    public function registration(UserRequest $request)
+    {
+        try {
+            $registration = (new UserService())->storeItem($request->validated());
+            if(!empty($registration)){
+                return redirect()->route('admin.loginPage');
+            }
+            else
+            {
+                return redirect()->back()->with('error', 'Opps! Registration Failed..')->withInput($request->all());
+            }
+
+        }catch (\Throwable $throwable){
+            return redirect()->back()->with('error', 'Something went wrong')->withInput($request->all());
+        }
     }
 
     public function login(LoginRequest $request): RedirectResponse

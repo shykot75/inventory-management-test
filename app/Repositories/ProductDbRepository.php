@@ -2,8 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Enums\ProductEnum;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class ProductDbRepository
 {
@@ -79,6 +81,55 @@ class ProductDbRepository
         return $this->category
             ->whereNull('deleted_at')
             ->get();
+    }
+
+    public function getProductListForPurchase(): mixed
+    {
+        return DB::table(ProductEnum::DB_TABLE)
+            ->whereNull('deleted_at')
+            ->select('product_id', 'product_name', 'quantity', 'product_price')
+            ->get();
+    }
+    public function getProductListForSale(): mixed
+    {
+        return DB::table(ProductEnum::DB_TABLE)
+            ->whereNull('deleted_at')
+            ->select('product_id', 'product_name', 'quantity', 'product_price')
+            ->get();
+    }
+
+    public function increaseQuantityForProductPurchase(int $productId, int $quantity)
+    {
+        $product = $this->product->findOrFail($productId);
+        if ($product) {
+            $product->increment('quantity', $quantity);
+        }
+        return $product;
+    }
+    public function decreaseQuantityForPurchaseReturn(int $productId, int $quantity)
+    {
+        $product = $this->product->findOrFail($productId);
+        if ($product) {
+            $product->decrement('quantity', $quantity);
+        }
+        return $product;
+    }
+
+    public function increaseQuantityForProductSale(int $productId, int $quantity)
+    {
+        $product = $this->product->findOrFail($productId);
+        if ($product) {
+            $product->increment('quantity', $quantity);
+        }
+        return $product;
+    }
+    public function decreaseQuantityForSaleReturn(int $productId, int $quantity)
+    {
+        $product = $this->product->findOrFail($productId);
+        if ($product) {
+            $product->decrement('quantity', $quantity);
+        }
+        return $product;
     }
 
 

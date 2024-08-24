@@ -44,8 +44,10 @@
 </div>
 <!-- Overlay -->
 <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden ease-in-out transition-all duration-500"></div>
+@stack('before-scripts')
 <script type="module" src="{{ asset('assets/js/bcs-util.js') }}"></script>
-@stack('after-scripts')
 <script type="module" src="{{ asset('assets/js/main.js') }}"></script>
+@vite(['resources/js/backend.js'])
+@stack('after-scripts')
 </body>
 </html>

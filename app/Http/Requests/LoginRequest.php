@@ -9,7 +9,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email:rfc,dns|email',
+            'email' => 'required|email',
             'password' => 'required|min:8|max:25',
             'remember_me' => 'nullable'
         ];

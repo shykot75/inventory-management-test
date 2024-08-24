@@ -117,7 +117,11 @@
                                         <span class="ml-4 mt-1 text-gray-500 file-name text-wrap dark:text-dark">No file chosen</span>
                                     </div>
                                     <div class="image-preview w-20 min-h-20 border border-dashed">
-                                        <img src="{{ !empty($product) ? asset('storage/' . $product->product_image) : '' }}" alt="Image Preview" class="rounded-md shadow-md">
+                                        @if(!empty($product))
+                                            <img src="{{ !empty($product) ? asset('storage/' . $product->product_image) : '' }}" alt="Image Preview" class="rounded-md shadow-md">
+                                        @else
+                                            <img src="" alt="Image Preview" class="hidden rounded-md shadow-md">
+                                        @endif
                                     </div>
                                     <input type="file" name="product_image" id="fileInput1" class="hidden form-file-input" accept="image/*"/>
                                 </div>
